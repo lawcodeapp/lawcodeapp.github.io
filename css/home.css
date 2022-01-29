@@ -56,5 +56,6 @@ body{
   .box .txt p{margin-top: 10px;font-size:12px;line-height: 22px ;color: #fff}
   .box .txt .logo{position: absolute;top:5px;left: 15px;width:62px;height:62px}
   .box .txt .logo > img{width: 100%;}
+  .box .txt ul{margin: 0px 0 50px 0;padding: 0;}
   .bg{position: absolute;top: 0;left: 0;right: 0;bottom: 0}
 }
