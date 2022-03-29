@@ -33,7 +33,7 @@ body{
   /* For tablets: */
   .contaner_inner{width: 80%;padding:0 10%;}
   .box .mobile_phone{text-align: center;}
-  .box .mobile_phone > img{width: 50%;min-width:245px}
+  .box .mobile_phone > img{width: 50%;}
   .box { display: initial;}
   .box .mobile_phone {width: 100%;}
   .box .txt { margin-top: 0;padding-left: 0}
@@ -48,7 +48,7 @@ body{
   /* For tablets: */
   .contaner_inner{width: 80%;padding:0 10%;}
   .box .mobile_phone{text-align: center;}
-  .box .mobile_phone > img{width: 50%;min-width:215px}
+  .box .mobile_phone > img{width: 50%;}
   .box { display: initial;}
   .box .mobile_phone {width: 100%;}
   .box .txt { margin-top: 0;padding-left: 0}
