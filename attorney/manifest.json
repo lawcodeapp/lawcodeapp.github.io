@@ -1,11 +1,11 @@
 {
-    "name": "attorney",
-    "short_name": "attorney",
+    "name": "Cambodia Attorney Code",
+    "short_name": "Cambodia Attorney Code",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#000000",
     "theme_color": "#000000",
-    "description": "A new Flutter project.",
+    "description": "The Cambodia Attorney Code mobile app is designed for everyone to improve the accessibility and readability of Cambodia Attorney Code.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
