@@ -1,127 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>Request Data Deletion</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            box-sizing: border-box;
-        }
-        .form-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: bold;
-            color: #555;
-        }
-        input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .message {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #333;
-        }
-
-        a{
-          text-decoration: none;
-          color: black;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            .form-container {
-                padding: 15px;
-                max-width: 100%;
-            }
-            h2 {
-                font-size: 18px;
-            }
-            input[type="email"], button {
-                font-size: 14px;
-                padding: 10px;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request Data Deletion | Khmer Law Code</title>
+  <meta name="description" content="Request deletion of your Khmer Law Code account data.">
+  <link rel="canonical" href="https://www.khmerlawcode.com/data">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#1f2c3b">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Battambang:wght@400;700&family=Moul&display=swap">
+  <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-
-<div class="form-container">
-    <div class="logo" style="display:flex;justify-content:center;"><img src="images_khmer/logo.png" style="width:200px;height:200px;"/></div>
-    <h2>Request Data Deletion</h2>
-    <div class="retention-info">
-        <p>Upon request, we will delete personal data such as email addresses, device identifiers, and purchase history.</p>
-        <p>Data such as subscription history or payment records may be retained for up to <strong>12 months</strong> for audit and compliance purposes as per app store policies (Google Play, Apple App Store).</p>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="./" aria-label="ក្រមច្បាប់ខ្មែរ – Khmer Law Code"><span class="brand-km" lang="km">ក្រមច្បាប់ខ្មែរ</span></a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="./" lang="km">ទំព័រដើម</a></li>
+        <li><a href="eng.html">Home (EN)</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a class="btn" href="eng.html#download">Download</a></li>
+      </ul>
     </div>
-    <form id="deletion-form">
-        <label for="email">Enter your email to request data deletion:</label>
-        <input type="email" id="email" name="email" required placeholder="Your email address"/>
-        <button type="submit">Submit Request</button>
-    </form>
-    <br>
-    <a href="www.khmerlawcode.com/terms">Term of Use</a> - <a href="www.khmerlawcode.com/privacy">Privacy Policy</a> - <a href="www.khmerlawcode.com">Khmer Law Code Website</a>
-    <div class="message" id="response-message"></div>
-
-</div>
-
-<script>
-    document.getElementById('deletion-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const email = document.getElementById('email').value;
-
-        if (email) {
-            // Simulate form submission (You can replace this with an actual API call)
-            document.getElementById('response-message').textContent = `A request has been sent to delete your data. We will process it shortly, ${email}.`;
-        } else {
-            document.getElementById('response-message').textContent = "Please enter a valid email address.";
-        }
+  </header>
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <h1>Request Data Deletion</h1>
+        <p>Khmer Law Code app</p>
+      </div>
+    </section>
+    <div class="container doc-wrap">
+      <article class="doc" style="max-width:620px">
+        <p>Upon request, we will delete personal data such as email addresses, device identifiers, and purchase history.</p>
+        <p class="note">Data such as subscription history or payment records may be retained for up to <strong>12 months</strong> for audit and compliance purposes as per app store policies (Google Play, Apple App Store).</p>
+        <form class="form" id="deletion-form">
+          <label for="email">Enter your email to request data deletion:</label>
+          <input type="email" id="email" name="email" required placeholder="Your email address" autocomplete="email">
+          <button type="submit" class="btn">Submit Request</button>
+          <p class="form-msg" id="response-message" role="status"></p>
+        </form>
+        <p style="font-size:15px">Submitting opens your email app with a pre-filled request to <a href="mailto:lawcodeapp@gmail.com">lawcodeapp@gmail.com</a>. You can also email us directly.</p>
+      </article>
+    </div>
+  </main>
+  <script>
+    document.getElementById('deletion-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      var email = document.getElementById('email').value.trim();
+      var msg = document.getElementById('response-message');
+      if (!email) { msg.textContent = 'Please enter a valid email address.'; return; }
+      var subject = 'Data deletion request – Khmer Law Code';
+      var body = 'Please delete the personal data associated with this account email: ' + email;
+      window.location.href = 'mailto:lawcodeapp@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      msg.textContent = 'Your email app should now open with the request. Please press send to complete it.';
     });
-</script>
-
+  </script>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="margin-top:0;border-top:0;padding-top:0">
+        <span>© <span data-year>2026</span> Khmer Law Code · <a href="mailto:lawcodeapp@gmail.com">lawcodeapp@gmail.com</a></span>
+        <span><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a> · <a href="data.html">Data Deletion</a></span>
+      </div>
+    </div>
+  </footer>
+  <script src="js/site.js"></script>
 </body>
 </html>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /styles.html
+
+Sitemap: https://www.khmerlawcode.com/sitemap.xml

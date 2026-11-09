@@ -1,0 +1,219 @@
+(function () {
+  document.documentElement.classList.remove('no-js');
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Mobile menu
+  var toggle = document.querySelector('.nav-toggle');
+  var links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.addEventListener('click', function (e) {
+      if (e.target.closest('a')) {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Header hairline once scrolled
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 8); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  // Rotating word inside the hero pill
+  var pill = document.querySelector('.action-pill');
+  if (pill && !reduceMotion) {
+    var word = pill.querySelector('.action-word');
+    var items = [];
+    try { items = JSON.parse(pill.getAttribute('data-words') || '[]'); } catch (e) { items = []; }
+    var i = 0;
+    var measure = function (text) {
+      var probe = pill.cloneNode(true);
+      probe.style.cssText = 'position:absolute;left:-10000px;top:-10000px;width:auto;visibility:hidden';
+      probe.querySelector('.action-word').textContent = text;
+      probe.querySelector('.action-word').className = 'action-word';
+      pill.parentNode.appendChild(probe);
+      var w = probe.getBoundingClientRect().width;
+      probe.remove();
+      return w;
+    };
+    var setWidth = function () { pill.style.width = measure(word.textContent) + 'px'; };
+    if (items.length > 1) {
+      setWidth();
+      window.addEventListener('resize', setWidth);
+      setInterval(function () {
+        if (document.hidden) return;
+        i = (i + 1) % items.length;
+        var next = items[i];
+        word.classList.add('leaving');
+        setTimeout(function () {
+          word.textContent = next.text;
+          pill.style.setProperty('--pill-bg', next.bg);
+          pill.style.width = measure(next.text) + 'px';
+          word.classList.remove('leaving');
+          word.classList.add('entering');
+          void word.offsetWidth; // restart transition
+          word.classList.remove('entering');
+        }, 220);
+      }, 2400);
+    }
+  }
+
+  // Feature accordion (one open at a time) driving the phone video
+  var acc = document.querySelector('.acc');
+  if (acc) {
+    var accItems = Array.prototype.slice.call(acc.querySelectorAll('.acc-item'));
+    var video = document.querySelector('.device-screen');
+    var toggleBtn = document.querySelector('.media-toggle');
+    var current = Math.max(0, accItems.findIndex(function (el) { return el.classList.contains('open'); }));
+    var autoAdvance = true;     // stops once the visitor picks a feature themselves
+    var inView = false;
+    var userPaused = !!reduceMotion;
+
+    var bar = function () { var it = accItems[current]; return it && it.querySelector('.acc-progress i'); };
+    var setPausedUI = function (paused) {
+      if (!toggleBtn) return;
+      toggleBtn.classList.toggle('paused', paused);
+      toggleBtn.setAttribute('aria-label', toggleBtn.getAttribute(paused ? 'data-label-play' : 'data-label-pause'));
+    };
+    var tryPlay = function () {
+      if (!video || userPaused || !inView) return;
+      var p = video.play();
+      if (p && p.catch) p.catch(function () { setPausedUI(true); });
+    };
+
+    var openItem = function (idx, fromUser) {
+      accItems.forEach(function (el, i) {
+        var on = i === idx;
+        el.classList.toggle('open', on);
+        el.querySelector('.acc-btn').setAttribute('aria-expanded', on ? 'true' : 'false');
+      });
+      current = idx;
+      var b = bar(); if (b) b.style.transform = 'scaleX(0)';
+      if (!video) return;
+      var src = accItems[idx].getAttribute('data-video');
+      if (src && video.getAttribute('src') !== src) {
+        video.setAttribute('poster', accItems[idx].getAttribute('data-poster') || '');
+        video.setAttribute('src', src);
+        video.load();
+      } else {
+        try { video.currentTime = 0; } catch (e) {}
+      }
+      video.classList.remove('swap'); void video.offsetWidth; video.classList.add('swap');
+      if (fromUser) { autoAdvance = false; userPaused = false; setPausedUI(false); }
+      tryPlay();
+    };
+
+    acc.addEventListener('click', function (e) {
+      var btn = e.target.closest('.acc-btn');
+      if (!btn) return;
+      var idx = accItems.indexOf(btn.parentNode);
+      if (idx === current && accItems[idx].classList.contains('open')) return; // keep one always open
+      openItem(idx, true);
+    });
+
+    if (video) {
+      video.loop = false;
+      video.addEventListener('timeupdate', function () {
+        var b = bar();
+        if (b && video.duration) b.style.transform = 'scaleX(' + (video.currentTime / video.duration) + ')';
+      });
+      video.addEventListener('ended', function () {
+        if (autoAdvance) openItem((current + 1) % accItems.length, false);
+        else { video.currentTime = 0; tryPlay(); }
+      });
+      video.addEventListener('click', function () { if (toggleBtn) toggleBtn.click(); });
+
+      if (toggleBtn) {
+        setPausedUI(userPaused);
+        toggleBtn.addEventListener('click', function () {
+          if (video.paused) { userPaused = false; inView = true; setPausedUI(false); tryPlay(); }
+          else { userPaused = true; video.pause(); setPausedUI(true); }
+        });
+      }
+
+      // Only load and play while the section is on screen
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          inView = entries[0].isIntersecting;
+          if (inView) { video.preload = 'auto'; tryPlay(); } else video.pause();
+        }, { threshold: 0.35 }).observe(video);
+      } else { inView = true; tryPlay(); }
+      document.addEventListener('visibilitychange', function () { if (document.hidden) video.pause(); else tryPlay(); });
+    }
+  }
+
+  // Download page: feature chips drive the phone video (always auto-advance)
+  var chipList = document.querySelector('.chips-feat');
+  var dlVideo = document.querySelector('.has-device .device-screen');
+  if (chipList && dlVideo) {
+    var chips = Array.prototype.slice.call(chipList.querySelectorAll('.chip'));
+    var dlToggle = document.querySelector('.has-device .media-toggle');
+    var cur = 0, dlPaused = !!reduceMotion, dlInView = false;
+    var dlUI = function (paused) {
+      if (!dlToggle) return;
+      dlToggle.classList.toggle('paused', paused);
+      dlToggle.setAttribute('aria-label', dlToggle.getAttribute(paused ? 'data-label-play' : 'data-label-pause'));
+    };
+    var dlPlay = function () {
+      if (dlPaused || !dlInView) return;
+      var pr = dlVideo.play(); if (pr && pr.catch) pr.catch(function () { dlPaused = true; dlUI(true); });
+    };
+    var show = function (idx) {
+      chips[cur].style.setProperty('--p', 0);
+      cur = idx;
+      chips.forEach(function (c, i) { c.setAttribute('aria-pressed', i === idx ? 'true' : 'false'); });
+      dlVideo.setAttribute('poster', chips[idx].getAttribute('data-poster'));
+      dlVideo.setAttribute('src', chips[idx].getAttribute('data-video'));
+      dlVideo.load();
+      dlVideo.classList.remove('swap'); void dlVideo.offsetWidth; dlVideo.classList.add('swap');
+      dlPlay();
+    };
+    chipList.addEventListener('click', function (e) {
+      var c = e.target.closest('.chip'); if (!c) return;
+      dlPaused = false; dlUI(false);
+      show(chips.indexOf(c));
+    });
+    dlVideo.addEventListener('timeupdate', function () {
+      if (dlVideo.duration) chips[cur].style.setProperty('--p', (dlVideo.currentTime / dlVideo.duration).toFixed(3));
+    });
+    dlVideo.addEventListener('ended', function () { show((cur + 1) % chips.length); });
+    dlVideo.addEventListener('click', function () { if (dlToggle) dlToggle.click(); });
+    if (dlToggle) {
+      dlUI(dlPaused);
+      dlToggle.addEventListener('click', function () {
+        if (dlVideo.paused) { dlPaused = false; dlInView = true; dlUI(false); dlPlay(); }
+        else { dlPaused = true; dlVideo.pause(); dlUI(true); }
+      });
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) {
+        dlInView = en[0].isIntersecting;
+        if (dlInView) { dlVideo.preload = 'auto'; dlPlay(); } else dlVideo.pause();
+      }, { threshold: 0.3 }).observe(dlVideo);
+    } else { dlInView = true; dlPlay(); }
+    document.addEventListener('visibilitychange', function () { if (document.hidden) dlVideo.pause(); else dlPlay(); });
+  }
+
+  // Reveal on scroll
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, { rootMargin: '0px 0px -6% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  // Footer year
+  document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+})();

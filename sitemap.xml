@@ -1,33 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 	<url>
 		<loc>https://www.khmerlawcode.com/</loc>
-		<lastmod>2022-05-05</lastmod>
-		<changefreq>weekly</changefreq>
-		<priority>1.0</priority>
+		<lastmod>2026-11-08</lastmod>
+		<xhtml:link rel="alternate" hreflang="km" href="https://www.khmerlawcode.com/"/>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.khmerlawcode.com/eng"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.khmerlawcode.com/"/>
 	</url>
 	<url>
 		<loc>https://www.khmerlawcode.com/eng</loc>
-		<lastmod>2022-05-05</lastmod>
-		<changefreq>weekly</changefreq>
-		<priority>1.0</priority>
+		<lastmod>2026-11-08</lastmod>
+		<xhtml:link rel="alternate" hreflang="km" href="https://www.khmerlawcode.com/"/>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.khmerlawcode.com/eng"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.khmerlawcode.com/"/>
 	</url>
 	<url>
-		<loc>https://www.khmerlawcode.com/constitution</loc>
-		<lastmod>2022-05-05</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.5</priority>
+		<loc>https://www.khmerlawcode.com/khmerlawcode</loc>
+		<lastmod>2026-11-08</lastmod>
 	</url>
 	<url>
-		<loc>https://www.khmerlawcode.com/criminal</loc>
-		<lastmod>2022-05-05</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.5</priority>
+		<loc>https://www.khmerlawcode.com/cambodia-attorney</loc>
+		<lastmod>2026-11-08</lastmod>
 	</url>
 	<url>
-		<loc>https://www.khmerlawcode.com/civil</loc>
-		<lastmod>2022-05-05</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.5</priority>
+		<loc>https://www.khmerlawcode.com/privacy</loc>
+		<lastmod>2026-11-08</lastmod>
 	</url>
-</urlset> 
+	<url>
+		<loc>https://www.khmerlawcode.com/privacy-attorney</loc>
+		<lastmod>2026-11-08</lastmod>
+	</url>
+	<url>
+		<loc>https://www.khmerlawcode.com/privacy-policy</loc>
+		<lastmod>2026-11-08</lastmod>
+	</url>
+	<url>
+		<loc>https://www.khmerlawcode.com/civil/privacy-policy</loc>
+		<lastmod>2026-11-08</lastmod>
+	</url>
+	<url>
+		<loc>https://www.khmerlawcode.com/criminal/privacy-policy</loc>
+		<lastmod>2026-11-08</lastmod>
+	</url>
+	<url>
+		<loc>https://www.khmerlawcode.com/terms</loc>
+		<lastmod>2026-11-08</lastmod>
+	</url>
+</urlset>
