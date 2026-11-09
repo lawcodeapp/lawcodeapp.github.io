@@ -82,7 +82,8 @@ p { margin: 0 0 1em; }
 .site-header {
   position: sticky; top: 0; z-index: 50;
   background: transparent;
-  transition: background-color .25s ease, box-shadow .25s ease;
+  transition: transform .35s var(--ease), background-color .25s ease, box-shadow .25s ease;
+  will-change: transform;
 }
 .site-header.scrolled { -webkit-backdrop-filter: saturate(160%) blur(14px); backdrop-filter: saturate(160%) blur(14px); background: rgba(31, 44, 59, .94); box-shadow: 0 1px 0 rgba(255, 255, 255, .08), 0 10px 30px -18px rgba(0, 0, 0, .6); }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
@@ -561,4 +562,15 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 }
 @media (max-width: 860px) {
   .download-page .hero-grid > div:first-child { width: 100%; }
+}
+
+/* ---------- Header: hide while scrolling down, reveal on scroll up ---------- */
+.site-header.header-hidden { transform: translateY(-100%); box-shadow: none; }
+.site-header.header-hidden:focus-within { transform: none; }
+@media (max-width: 860px) {
+  .showcase-media { transition: top .35s var(--ease); }
+  html.header-is-hidden .showcase-media { top: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .showcase-media { transition: none; }
 }

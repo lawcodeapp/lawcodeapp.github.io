@@ -24,12 +24,33 @@
     });
   }
 
-  // Header hairline once scrolled
+  // Header: solid once scrolled; hides while scrolling down, comes back on scroll up
   var header = document.querySelector('.site-header');
   if (header) {
-    var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 8); };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    var root = document.documentElement;
+    var lastY = Math.max(0, window.scrollY);
+    var TOLERANCE = 8;          // ignore tiny movements so the header doesn't flicker
+    var ticking = false;
+    var setHidden = function (hide) {
+      header.classList.toggle('header-hidden', hide);
+      root.classList.toggle('header-is-hidden', hide);
+    };
+    var update = function () {
+      ticking = false;
+      var y = Math.max(0, window.scrollY);     // ignore iOS rubber-band negatives
+      header.classList.toggle('scrolled', y > 8);
+      var menuOpen = links && links.classList.contains('open');
+      var revealZone = 160;            // always show near the top of the page
+      if (menuOpen || y <= revealZone) { setHidden(false); lastY = y; return; }
+      var delta = y - lastY;
+      if (Math.abs(delta) < TOLERANCE) return;  // accumulate until a clear direction
+      setHidden(delta > 0);
+      lastY = y;
+    };
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
   }
 
   // Rotating word inside the hero pill
