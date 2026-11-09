@@ -1,5 +1,11 @@
 (function () {
   document.documentElement.classList.remove('no-js');
+
+  // Old links/bookmarks may still use /page.html: show the clean URL instead (live site only)
+  if (/khmerlawcode\.com$/.test(location.hostname) && /\.html$/.test(location.pathname) && window.history.replaceState) {
+    var clean = location.pathname.replace(/(index)?\.html$/, '');
+    history.replaceState(null, '', clean + location.search + location.hash);
+  }
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Mobile menu

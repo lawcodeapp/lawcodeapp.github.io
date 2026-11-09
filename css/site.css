@@ -529,3 +529,9 @@ main > .hero:first-child, main > .page-hero:first-child { margin-top: -72px; pad
 .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 6px; }
 .faq-item p { margin: -4px 0 22px; color: var(--ink-2); font-size: 16px; line-height: 1.8; max-width: 44em; }
 :lang(km) .faq-item p { line-height: 2; }
+
+/* ---------- Touch: no blue tap flash; focus ring only for keyboard users ---------- */
+html { -webkit-tap-highlight-color: transparent; }
+a, button, summary, video, .chip, .store { -webkit-tap-highlight-color: transparent; }
+:focus:not(:focus-visible) { outline: none; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
