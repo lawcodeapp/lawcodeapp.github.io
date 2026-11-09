@@ -535,3 +535,30 @@ html { -webkit-tap-highlight-color: transparent; }
 a, button, summary, video, .chip, .store { -webkit-tap-highlight-color: transparent; }
 :focus:not(:focus-visible) { outline: none; }
 a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* ---------- Download page: feature chips as a one-row fading carousel ---------- */
+.chips-feat {
+  position: relative; flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity; scrollbar-width: none; padding: 5px 36px;
+  margin-inline: -36px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%);
+}
+.chips-feat::-webkit-scrollbar { display: none; }
+.chips-feat li { flex: none; scroll-snap-align: center; }
+.chips-feat .chip { white-space: nowrap; }
+.hero-visual.has-device .device { width: min(330px, 78%); }
+@media (max-width: 860px) {
+  .download-page .chips-feat { justify-content: flex-start; margin-inline: calc(-1 * var(--gutter)); padding: 4px 40px; }
+  .download-page .hero-visual.has-device { padding: 6px; }
+  .download-page .hero.landing > .hero-grid { gap: 10px; }
+}
+/* keep the one-row carousel from widening its column */
+.download-page .hero-grid > div:first-child { min-width: 0; max-width: 100%; }
+.download-page .chip-group { min-width: 0; width: 100%; }
+@media (min-width: 861px) {
+  .hero-visual.has-device .device { width: auto; height: min(70vh, 660px); }
+}
+@media (max-width: 860px) {
+  .download-page .hero-grid > div:first-child { width: 100%; }
+}

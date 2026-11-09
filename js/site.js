@@ -179,6 +179,10 @@
       dlVideo.setAttribute('src', chips[idx].getAttribute('data-video'));
       dlVideo.load();
       dlVideo.classList.remove('swap'); void dlVideo.offsetWidth; dlVideo.classList.add('swap');
+      // slide the chip row so the active feature sits in the middle
+      var li = chips[idx].parentNode;
+      var left = li.offsetLeft - (chipList.clientWidth - li.offsetWidth) / 2;
+      chipList.scrollTo({ left: Math.max(0, left), behavior: reduceMotion ? 'auto' : 'smooth' });
       dlPlay();
     };
     chipList.addEventListener('click', function (e) {
