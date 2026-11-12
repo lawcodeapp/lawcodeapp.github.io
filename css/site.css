@@ -629,7 +629,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
   box-shadow: 0 14px 30px -14px rgba(0, 0, 0, .8); color: #dfe6ee; font-family: "Inter", sans-serif;
 }
 .sp-card-chip { position: absolute; left: 18px; top: 18px; width: 34px; height: 25px; border-radius: 5px; background: linear-gradient(135deg, #e9c877, #b8913c); }
-.sp-card-no { position: absolute; left: 18px; bottom: 44px; font-size: 15px; letter-spacing: .06em; }
+.sp-card-no { position: absolute; left: 18px; bottom: 54px; font-size: 15px; letter-spacing: .06em; }
 .sp-card-exp { position: absolute; left: 18px; bottom: 12px; display: flex; align-items: baseline; gap: 8px; font-size: 18px; font-weight: 700; color: #fff;
   padding: 1px 8px 1px 0; outline: 2px dashed var(--gold); outline-offset: 4px; border-radius: 4px; }
 .sp-card-exp small { font-size: 8px; line-height: 1.1; width: 34px; font-weight: 600; color: #aab6c4; }
@@ -668,11 +668,43 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .sp-contact.primary { background: var(--gold); border-color: var(--gold); color: var(--navy-2); }
 .sp-contact.primary svg, .sp-contact.primary small { color: var(--navy-2); }
 
+/* Phones: most visitors arrive here from the app's Help button */
 @media (max-width: 700px) {
-  .sp-howto { grid-template-columns: 1fr; }
-  .sp-short { width: min(100%, 300px); margin: 0 auto; }
-  .sp-arrow { transform: rotate(90deg); }
+  .support-page .page-hero { margin-bottom: 18px; }
+  .support-page .page-hero .container { padding-top: 26px; padding-bottom: 26px; }
+  .support-page .page-hero h1 { font-size: 34px; margin-bottom: 4px; }
+  .support-page .page-hero p { font-size: 15.5px; line-height: 1.6; }
+
+  /* The three sections as one row of equal buttons */
+  .sp-jump { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 18px; }
+  .sp-jump a { flex-direction: column; justify-content: center; gap: 6px; padding: 12px 6px; border-radius: 16px; font-size: 13.5px; line-height: 1.45; text-align: center; }
+
+  /* One card per section, no box inside a box */
+  .sp-section { padding: 22px 18px; border-radius: 26px; margin-bottom: 16px; }
+  .sp-section h2 { font-size: 20px; gap: 10px; }
+  .sp-num { width: 32px; height: 32px; font-size: 16px; }
+  .sp-lead { margin-bottom: 18px; }
+
+  .sp-howto { grid-template-columns: 1fr; gap: 22px; }
+  .sp-short { width: min(100%, 240px); margin: 0 auto; border-radius: 18px; }
+  .sp-steps li { padding-left: 40px; padding-bottom: 14px; }
+
+  .sp-expiry { margin-top: 18px; padding: 18px 16px; border-radius: 20px; }
+  .sp-expiry-head { align-items: flex-start; }
+  .sp-expiry-head svg { width: 26px; height: 26px; margin-top: 3px; }
+  .sp-expiry > p { margin: 8px 0 16px; }
+  .sp-expiry-demo { flex-direction: column; gap: 10px; }
+  .sp-card { width: min(100%, 260px); }
+  .sp-arrow { transform: rotate(90deg); line-height: 0; }
+  .sp-arrow svg { width: 28px; height: 28px; }
   .sp-fields { width: 100%; }
-  .sp-field { min-width: 0; }
-  .sp-contacts { grid-template-columns: 1fr; }
+  .sp-field { min-width: 0; font-size: 20px; padding: 10px 14px; }
+
+  .sp-banks { gap: 26px; }
+  .sp-bank { padding: 0; background: none; border: 0; border-radius: 0; gap: 8px; }
+  .sp-bank + .sp-bank { padding-top: 22px; border-top: 1px solid var(--line); }
+  .sp-video { border-radius: 12px; }
+
+  .sp-contacts { grid-template-columns: 1fr; gap: 10px; }
+  .sp-contact { padding: 14px 16px; }
 }
