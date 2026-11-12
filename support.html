@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ជំនួយ – របៀបជាវ | Khmer Law Code</title>
-  <meta name="description" content="របៀបភ្ជាប់កាតធនាគារទៅ Apple Account ដើម្បីជាវកម្មវិធីក្រមច្បាប់ខ្មែរ វិធីបង្កើតកាតនិម្មិត ABA ACLEDA និង Wing និងទំនាក់ទំនងក្រុមការងារ">
+  <meta name="description" content="របៀបភ្ជាប់កាតធនាគារទៅ Apple Account ឬ Google Play ដើម្បីជាវកម្មវិធីក្រមច្បាប់ខ្មែរ វិធីបង្កើតកាតនិម្មិត ABA ACLEDA និង Wing និងទំនាក់ទំនងក្រុមការងារ">
   <link rel="canonical" href="https://www.khmerlawcode.com/support">
   <meta name="theme-color" content="#1f2c3b">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Khmer Law Code">
   <meta property="og:title" content="ជំនួយ – របៀបជាវកម្មវិធីក្រមច្បាប់ខ្មែរ">
-  <meta property="og:description" content="ភ្ជាប់កាតទៅ Apple Account បង្កើតកាតនិម្មិត និងទាក់ទងក្រុមការងារ">
+  <meta property="og:description" content="ភ្ជាប់កាតទៅ Apple Account ឬ Google Play បង្កើតកាតនិម្មិត និងទាក់ទងក្រុមការងារ">
   <meta property="og:url" content="https://www.khmerlawcode.com/support">
   <meta property="og:image" content="https://www.khmerlawcode.com/images/web/og-image.jpg">
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Battambang:wght@400;700&family=Moul&display=swap">
-  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/site.css?v=20261112">
 </head>
 <body class="support-page">
   <a class="skip-link" href="#main">រំលងទៅមាតិកា</a>
@@ -49,16 +49,30 @@
 
     <div class="container doc-wrap">
       <nav class="sp-jump" aria-label="មាតិកា">
-        <a href="#add-card"><b>១</b> ភ្ជាប់កាតទៅ Apple</a>
+        <a href="#add-card"><b>១</b> ភ្ជាប់កាត</a>
         <a href="#no-card"><b>២</b> មិនទាន់មានកាត?</a>
         <a href="#contact"><b>៣</b> ទាក់ទងយើង</a>
       </nav>
 
-      <!-- 1. Add a card to the Apple Account -->
+      <!-- 1. Add a card: App Store (iPhone) or Google Play (Android) -->
       <section class="sp-section" id="add-card" aria-labelledby="add-card-title">
-        <h2 id="add-card-title"><span class="sp-num">១</span>ភ្ជាប់កាតទៅ Apple Account របស់អ្នក</h2>
-        <p class="sp-lead">ការជាវធ្វើឡើងតាម App Store។ ដំបូង សូមភ្ជាប់កាត Visa ឬ Mastercard ទៅ Apple Account របស់អ្នកជាមុនសិន។</p>
+        <h2 id="add-card-title"><span class="sp-num">១</span>ភ្ជាប់កាតទៅទូរស័ព្ទរបស់អ្នក</h2>
+        <p class="sp-lead">ការជាវធ្វើឡើងតាម App Store ឬ Google Play។ ដំបូង សូមភ្ជាប់កាត Visa ឬ Mastercard ជាមុនសិន។ ជ្រើសទូរស័ព្ទរបស់អ្នក៖</p>
 
+        <!-- Shown once site.js has run; without it both guides are shown. -->
+        <div class="sp-switch" role="tablist" aria-label="ប្រភេទទូរស័ព្ទ" hidden>
+          <button type="button" role="tab" id="tab-ios" aria-controls="app-store" aria-selected="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.64.8-3.33.8-.69 0-1.74-.78-2.87-.76-1.47.02-2.83.86-3.59 2.18-1.53 2.66-.39 6.6 1.1 8.75.73 1.05 1.6 2.24 2.73 2.2 1.1-.05 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.65-2.13.84-1.22 1.18-2.4 1.2-2.46-.03-.01-2.3-.88-2.3-3.5zM14.2 6.13c.6-.73 1.01-1.75.9-2.76-.87.04-1.92.58-2.54 1.31-.56.64-1.05 1.67-.92 2.66.97.07 1.96-.49 2.56-1.21z"/></svg>
+            <span><b lang="en">iPhone</b><small lang="en">App Store</small></span>
+          </button>
+          <button type="button" role="tab" id="tab-android" aria-controls="google-play" aria-selected="false" tabindex="-1">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.38.38 0 0 0-.66-.38l-1.87 3.23A11.5 11.5 0 0 0 12 8.1c-1.74 0-3.4.39-4.91 1.05L5.22 5.92a.38.38 0 0 0-.66.38l1.84 3.18C3.24 11.2 1.07 14.4.75 18h22.5c-.32-3.6-2.49-6.8-5.65-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
+            <span><b lang="en">Android</b><small lang="en">Google Play</small></span>
+          </button>
+        </div>
+
+        <div class="sp-panel" id="app-store" role="tabpanel" aria-labelledby="tab-ios">
+        <h3 class="sp-panel-title"><span lang="en">iPhone</span> – ភ្ជាប់កាតទៅ <span lang="en">Apple Account</span></h3>
         <div class="sp-howto">
           <div class="sp-short">
             <iframe src="https://www.youtube-nocookie.com/embed/JuYIkFObIGE?rel=0" title="វីដេអូ៖ របៀបភ្ជាប់កាតទៅ Apple Account" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -96,6 +110,31 @@
               <div class="sp-field wrong"><span class="sp-mark" aria-label="ខុស">✕</span><span lang="en">08/28</span><small>ខុស</small></div>
               <div class="sp-field right"><span class="sp-mark" aria-label="ត្រូវ">✓</span><span lang="en">08/2028</span><small>ត្រូវ</small></div>
             </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="sp-panel" id="google-play" role="tabpanel" aria-labelledby="tab-android">
+          <h3 class="sp-panel-title"><span lang="en">Android</span> – ភ្ជាប់កាតទៅ <span lang="en">Google Play</span></h3>
+          <div class="sp-howto sp-howto-wide">
+            <div class="sp-video">
+              <iframe src="https://www.youtube-nocookie.com/embed/B2pTTfdcRVQ?rel=0" title="វីដេអូ៖ របៀបភ្ជាប់កាតធនាគារជាមួយ Play Store" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <ol class="sp-steps">
+              <li>បើក <b lang="en">Play Store</b> ហើយចុចរូបប្រូហ្វាល់របស់អ្នក នៅជ្រុងខាងលើស្តាំ</li>
+              <li>ចុច <b lang="en">Payments &amp; subscriptions</b> រួចចុច <b lang="en">Payment methods</b></li>
+              <li>ចុច <b lang="en">Add a payment method</b> ហើយជ្រើស <b lang="en">Add credit or debit card</b></li>
+              <li>បញ្ចូលលេខកាត ១៦ ខ្ទង់</li>
+              <li class="sp-step-key">បញ្ចូលថ្ងៃផុតកំណត់ <b lang="en">MM/YY</b> ដូចលើកាត ឧទាហរណ៍ <b lang="en">08/28</b> និងលេខ <b lang="en">CVC</b> ៣ ខ្ទង់ នៅខាងក្រោយកាត</li>
+              <li>បំពេញឈ្មោះលើកាត ប្រទេស <b lang="en">Cambodia</b> និងអាសយដ្ឋាន រួចចុច <b lang="en">Save</b></li>
+              <li>ត្រឡប់មកកម្មវិធីក្រមច្បាប់ខ្មែរវិញ ជ្រើសគម្រោង ហើយចុច «ចាប់ផ្តើមប្រើប្រាស់ឥឡូវនេះ»</li>
+            </ol>
+          </div>
+
+          <div class="sp-callout" role="note">
+            <p><b>ខុសពី <span lang="en">iPhone</span>៖</b> <span lang="en">Google Play</span> ប្រើឆ្នាំ ២ ខ្ទង់ ដូចលើកាត (<b lang="en">08/28</b>)។ មិនចាំបាច់សរសេរឆ្នាំពេញទេ។</p>
+            <p>អ្នកក៏អាចបន្ថែមកាតនៅពេលជាវតែម្តង៖ ក្នុងផ្ទាំងទូទាត់របស់ <span lang="en">Google Play</span> ចុចលើវិធីបង់ប្រាក់ រួចជ្រើស <b lang="en">Add credit or debit card</b>។ <span lang="en">Google</span> អាចកាត់ប្រាក់បណ្តោះអាសន្នតិចតួច ដើម្បីផ្ទៀងផ្ទាត់កាត ហើយនឹងបង្វិលមកវិញ។</p>
           </div>
         </div>
 
@@ -167,6 +206,6 @@
     </div>
   </footer>
 
-  <script src="js/site.js"></script>
+  <script src="js/site.js?v=20261112"></script>
 </body>
 </html>

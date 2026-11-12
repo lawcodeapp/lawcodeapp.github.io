@@ -668,6 +668,29 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .sp-contact.primary { background: var(--gold); border-color: var(--gold); color: var(--navy-2); }
 .sp-contact.primary svg, .sp-contact.primary small { color: var(--navy-2); }
 
+/* iPhone / Android switch */
+.sp-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 6px; margin: 0 0 26px; background: rgba(255, 255, 255, .04); border: 1px solid var(--line); border-radius: 20px; }
+.sp-switch[hidden] { display: none; }
+.sp-switch button { display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 60px; padding: 10px 14px; border: 1px solid transparent; border-radius: 15px; background: none; color: var(--ink-2); font: inherit; cursor: pointer; transition: background .2s, color .2s; }
+.sp-switch button:hover { color: #fff; }
+.sp-switch button svg { width: 24px; height: 24px; flex: none; }
+.sp-switch button span { display: grid; text-align: left; line-height: 1.25; }
+.sp-switch button b { font-size: 16px; font-weight: 600; }
+.sp-switch button small { font-size: 12.5px; color: inherit; opacity: .75; }
+.sp-switch button[aria-selected="true"] { background: var(--gold); color: var(--navy-2); }
+.sp-switch button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+/* The switch names the guide, so the guide's own title is only for when it is missing. */
+.sp-panel-title { font-size: 18px; margin: 0 0 16px; color: #fff; }
+.sp-switched .sp-panel-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.sp-panel { scroll-margin-top: 24px; }
+.sp-panel + .sp-panel { margin-top: 36px; }
+.sp-switched .sp-panel + .sp-panel { margin-top: 0; }
+.sp-howto-wide { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+.sp-callout { margin-top: 22px; padding: 18px 20px; border-radius: 18px; background: rgba(227, 180, 83, .08); border: 1px solid rgba(227, 180, 83, .35); color: var(--ink-2); line-height: 1.7; }
+.sp-callout p { margin: 0; }
+.sp-callout p + p { margin-top: 10px; }
+.sp-callout b { color: #fff; font-weight: 600; }
+
 /* Phones: most visitors arrive here from the app's Help button */
 @media (max-width: 700px) {
   .support-page .page-hero { margin-bottom: 18px; }
@@ -685,7 +708,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
   .sp-num { width: 32px; height: 32px; font-size: 16px; }
   .sp-lead { margin-bottom: 18px; }
 
-  .sp-howto { grid-template-columns: 1fr; gap: 22px; }
+  .sp-howto, .sp-howto-wide { grid-template-columns: 1fr; gap: 22px; }
+  .sp-switch { margin-bottom: 20px; }
+  .sp-switch button { gap: 10px; min-height: 56px; padding: 8px 10px; }
+  .sp-callout { padding: 16px; }
   .sp-short { width: min(100%, 240px); margin: 0 auto; border-radius: 18px; }
   .sp-steps li { padding-left: 40px; padding-bottom: 14px; }
 

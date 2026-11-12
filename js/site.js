@@ -247,4 +247,58 @@
 
   // Footer year
   document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+  // Support page: iPhone / Android guide switch. Android phones, and links
+  // to #google-play (the Android app's Help button), open the Android guide.
+  var phoneSwitch = document.querySelector('.sp-switch');
+  if (phoneSwitch) {
+    var tabs = Array.prototype.slice.call(phoneSwitch.querySelectorAll('[role="tab"]'));
+    var panelOf = function (tab) { return document.getElementById(tab.getAttribute('aria-controls')); };
+    var select = function (tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        panelOf(t).hidden = !on;
+      });
+      if (focus) tab.focus();
+    };
+    var fromHash = function () {
+      var id = location.hash.slice(1);
+      if (!id) return null;
+      for (var i = 0; i < tabs.length; i++) {
+        var panel = panelOf(tabs[i]);
+        if (panel.id === id || panel.querySelector('[id="' + id + '"]')) return tabs[i];
+      }
+      return null;
+    };
+    var android = /Android/i.test(navigator.userAgent);
+    var first = fromHash() || (android ? tabs[1] : tabs[0]);
+    phoneSwitch.hidden = false;
+    phoneSwitch.parentNode.classList.add('sp-switched');
+    select(first, false);
+    // Scroll to the guide once it is shown.
+    if (fromHash() === first) {
+      var target = document.getElementById(location.hash.slice(1));
+      if (target) setTimeout(function () { target.scrollIntoView(); }, 0);
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { select(tab, false); });
+      tab.addEventListener('keydown', function (e) {
+        var next = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : null;
+        if (next === null) return;
+        e.preventDefault();
+        select(tabs[(next + tabs.length) % tabs.length], true);
+      });
+    });
+    window.addEventListener('hashchange', function () {
+      var tab = fromHash();
+      if (tab) {
+        select(tab, false);
+        var el = document.getElementById(location.hash.slice(1));
+        if (el) el.scrollIntoView();
+      }
+    });
+  }
 })();
