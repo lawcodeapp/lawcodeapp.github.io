@@ -583,154 +583,67 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
   .download-page .hero-visual.has-device .media-toggle { right: 12px; bottom: 14px; }
 }
 
-/* ---------- Support page ---------- */
-.support-page .doc-wrap { max-width: 900px; }
-.sp-jump { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 0 0 clamp(28px, 4vw, 44px); }
-.sp-jump a {
-  display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px 8px 8px; border-radius: 999px;
-  background: var(--black); border: 1px solid var(--line); color: var(--ink); text-decoration: none; font-size: 15px;
-  transition: border-color .2s;
-}
-.sp-jump a:hover { border-color: rgba(227, 180, 83, .5); }
-.sp-jump b { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--gold); color: var(--navy-2); font-size: 14px; }
+/* ---------- Support page: one quiet reading column, like a help article ---------- */
+.sp { padding: clamp(28px, 6vw, 72px) var(--gutter) clamp(64px, 9vw, 120px); }
+.sp-article { max-width: 680px; margin: 0 auto; color: var(--ink-2); font-size: 17px; line-height: 1.8; }
+.sp-article h1 { font-family: var(--font); font-size: clamp(30px, 6vw, 44px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.35; color: #fff; margin: 0 0 12px; }
+.sp-article h2 { font-family: var(--font); font-size: 24px; font-weight: 700; line-height: 1.45; color: #fff; margin: 0 0 16px; }
+.sp-article h3 { font-family: var(--font); font-size: 17px; font-weight: 700; color: #fff; margin: 32px 0 12px; }
+.sp-article p { margin: 0 0 16px; }
+.sp-article b { color: #fff; font-weight: 700; }
+.sp-article a { color: var(--gold); text-underline-offset: 3px; }
+.sp-intro { font-size: 19px; color: var(--ink-2); }
+.sp-article section { scroll-margin-top: 88px; }
+.sp-article > section + section, .sp-small + section { margin-top: 64px; }
 
-.sp-section { background: var(--black); border: 1px solid var(--line); border-radius: var(--r-lg); padding: clamp(22px, 5vw, 52px); margin-bottom: clamp(20px, 3vw, 32px); scroll-margin-top: 90px; }
-.sp-section h2 { display: flex; align-items: center; gap: 12px; font-size: clamp(21px, 2.6vw, 26px); margin: 0 0 10px; color: #fff; line-height: 1.5; }
-.sp-num { flex: none; display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--gold); color: var(--navy-2); font-size: 18px; }
-.sp-lead { color: var(--ink-2); margin: 0 0 24px; }
-.sp-lead b { color: #fff; }
-
-.sp-howto { display: grid; grid-template-columns: minmax(0, 280px) minmax(0, 1fr); gap: clamp(20px, 4vw, 40px); align-items: start; }
-.sp-short { position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #000; border: 1px solid var(--line); }
-.sp-short iframe, .sp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-
-.sp-steps { list-style: none; counter-reset: step; margin: 0; padding: 0; }
-.sp-steps li { counter-increment: step; position: relative; padding: 0 0 16px 44px; color: var(--ink-2); line-height: 1.7; }
-.sp-steps li::before {
-  content: counter(step); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%;
-  display: grid; place-items: center; font: 600 14px/1 var(--font); color: var(--gold); border: 1.5px solid rgba(227, 180, 83, .55);
-}
-.sp-steps li:not(:last-child)::after { content: ""; position: absolute; left: 14.5px; top: 34px; bottom: 4px; width: 1px; background: var(--line); }
-.sp-steps b { color: #fff; font-weight: 600; }
-.sp-steps a { color: var(--gold); }
-.sp-steps li.sp-step-key::before { background: var(--gold); color: var(--navy-2); border-color: var(--gold); }
-
-/* The expiry-date warning: the one thing people get wrong */
-.sp-expiry { margin-top: 28px; padding: clamp(18px, 3.5vw, 30px); border-radius: 24px; background: rgba(227, 180, 83, .1); border: 2px solid var(--gold); scroll-margin-top: 90px; }
-.sp-expiry-head { display: flex; align-items: center; gap: 12px; }
-.sp-expiry-head svg { flex: none; width: 30px; height: 30px; color: var(--gold); }
-.sp-expiry h3 { margin: 0; font-size: clamp(18px, 2.3vw, 22px); color: var(--gold); line-height: 1.5; }
-.sp-expiry > p { color: #f1dfb2; margin: 10px 0 20px; }
-.sp-expiry > p b { color: #fff; }
-.sp-expiry-demo { display: flex; align-items: center; justify-content: center; gap: clamp(12px, 3vw, 28px); flex-wrap: wrap; }
-.sp-card {
-  position: relative; width: 230px; aspect-ratio: 1.586; border-radius: 14px; padding: 16px 18px;
-  background: linear-gradient(135deg, #3a5470, #1b2633); border: 1px solid rgba(255, 255, 255, .14);
-  box-shadow: 0 14px 30px -14px rgba(0, 0, 0, .8); color: #dfe6ee; font-family: "Inter", sans-serif;
-}
-.sp-card-chip { position: absolute; left: 18px; top: 18px; width: 34px; height: 25px; border-radius: 5px; background: linear-gradient(135deg, #e9c877, #b8913c); }
-.sp-card-no { position: absolute; left: 18px; bottom: 54px; font-size: 15px; letter-spacing: .06em; }
-.sp-card-exp { position: absolute; left: 18px; bottom: 12px; display: flex; align-items: baseline; gap: 8px; font-size: 18px; font-weight: 700; color: #fff;
-  padding: 1px 8px 1px 0; outline: 2px dashed var(--gold); outline-offset: 4px; border-radius: 4px; }
-.sp-card-exp small { font-size: 8px; line-height: 1.1; width: 34px; font-weight: 600; color: #aab6c4; }
-.sp-arrow svg { width: 34px; height: 34px; color: var(--gold); }
-.sp-fields { display: grid; gap: 10px; }
-.sp-field { display: flex; align-items: center; gap: 12px; min-width: 210px; padding: 10px 16px; border-radius: 12px; background: #fff; color: #1b2430; font: 700 22px/1.2 "Inter", sans-serif; }
-.sp-field small { margin-left: auto; font: 700 14px/1.4 var(--font); }
-.sp-mark { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; color: #fff; font-size: 15px; }
-.sp-field.wrong { border: 2px solid #e5484d; }
-.sp-field.wrong > span[lang] { text-decoration: line-through; text-decoration-color: #e5484d; color: #8a929c; }
-.sp-field.wrong .sp-mark { background: #e5484d; }
-.sp-field.wrong small { color: #c7353a; }
-.sp-field.right { border: 2px solid #2f9e62; box-shadow: 0 0 0 4px rgba(47, 158, 98, .18); }
-.sp-field.right .sp-mark { background: #2f9e62; }
-.sp-field.right small { color: #23804e; }
-.sp-tip { margin: 20px 0 0; color: var(--ink-3); font-size: 15px; }
-
-.sp-banks { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-.sp-bank { background: var(--black-2); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; display: flex; flex-direction: column; gap: 10px; }
-.sp-bank h3 { margin: 0; font-size: 19px; color: #fff; }
-.sp-path { margin: 0; font-size: 14px; color: var(--gold); line-height: 1.6; }
-.sp-video { position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: #000; }
-.sp-note { margin: 0; font-size: 14px; color: var(--ink-3); }
-
-.sp-contacts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-.sp-contact {
-  display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: 18px; text-decoration: none;
-  background: var(--black-2); border: 1px solid var(--line); color: var(--ink); transition: transform .15s, border-color .2s;
-}
-.sp-contact:hover { transform: translateY(-1px); border-color: rgba(227, 180, 83, .5); }
-.sp-contact:focus-visible, .sp-jump a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-.sp-contact svg { flex: none; width: 28px; height: 28px; color: var(--gold); }
-.sp-contact span { display: flex; flex-direction: column; min-width: 0; }
-.sp-contact b { font-size: 16px; }
-.sp-contact small { color: var(--ink-3); font-size: 13.5px; overflow-wrap: anywhere; }
-.sp-contact.primary { background: var(--gold); border-color: var(--gold); color: var(--navy-2); }
-.sp-contact.primary svg, .sp-contact.primary small { color: var(--navy-2); }
-
-/* iPhone / Android switch */
-.sp-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 6px; margin: 0 0 26px; background: rgba(255, 255, 255, .04); border: 1px solid var(--line); border-radius: 20px; }
+/* iPhone / Android: a plain segmented control */
+.sp-switch { display: inline-flex; gap: 4px; padding: 4px; margin: 20px 0 36px; border-radius: 12px; background: rgba(255, 255, 255, .07); }
 .sp-switch[hidden] { display: none; }
-.sp-switch button { display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 60px; padding: 10px 14px; border: 1px solid transparent; border-radius: 15px; background: none; color: var(--ink-2); font: inherit; cursor: pointer; transition: background .2s, color .2s; }
+.sp-switch button { min-width: 120px; min-height: 44px; padding: 0 20px; border: 0; border-radius: 9px; background: none; color: var(--ink-2); font: 600 16px/1 var(--font); cursor: pointer; transition: background .2s, color .2s; }
 .sp-switch button:hover { color: #fff; }
-.sp-switch button svg { width: 24px; height: 24px; flex: none; }
-.sp-switch button span { display: grid; text-align: left; line-height: 1.25; }
-.sp-switch button b { font-size: 16px; font-weight: 600; }
-.sp-switch button small { font-size: 12.5px; color: inherit; opacity: .75; }
-.sp-switch button[aria-selected="true"] { background: var(--gold); color: var(--navy-2); }
+.sp-switch button[aria-selected="true"] { background: #fff; color: var(--navy-2); }
 .sp-switch button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-/* The switch names the guide, so the guide's own title is only for when it is missing. */
-.sp-panel-title { font-size: 18px; margin: 0 0 16px; color: #fff; }
-.sp-switched .sp-panel-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.sp-panel { scroll-margin-top: 24px; }
-.sp-panel + .sp-panel { margin-top: 36px; }
-.sp-switched .sp-panel + .sp-panel { margin-top: 0; }
-.sp-howto-wide { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
-.sp-callout { margin-top: 22px; padding: 18px 20px; border-radius: 18px; background: rgba(227, 180, 83, .08); border: 1px solid rgba(227, 180, 83, .35); color: var(--ink-2); line-height: 1.7; }
-.sp-callout p { margin: 0; }
-.sp-callout p + p { margin-top: 10px; }
-.sp-callout b { color: #fff; font-weight: 600; }
+.sp-panel + .sp-panel { margin-top: 56px; }
+.sp-switch:not([hidden]) ~ .sp-panel + .sp-panel { margin-top: 0; }
 
-/* Phones: most visitors arrive here from the app's Help button */
-@media (max-width: 700px) {
-  .support-page .page-hero { margin-bottom: 18px; }
-  .support-page .page-hero .container { padding-top: 26px; padding-bottom: 26px; }
-  .support-page .page-hero h1 { font-size: 34px; margin-bottom: 4px; }
-  .support-page .page-hero p { font-size: 15.5px; line-height: 1.6; }
+/* Steps: plain numbers, no boxes */
+.sp-steps { list-style: none; counter-reset: step; margin: 0 0 24px; padding: 0; }
+.sp-steps li { counter-increment: step; position: relative; padding: 0 0 14px 40px; }
+.sp-steps li::before { content: counter(step); position: absolute; left: 0; top: .2em; width: 26px; height: 26px; border-radius: 50%; background: rgba(255, 255, 255, .1); color: #fff; font: 600 14px/26px var(--font); text-align: center; }
+.sp-steps li[id] { scroll-margin-top: 96px; }
+.sp-example { display: inline-flex; align-items: center; gap: 8px; margin-left: 6px; white-space: nowrap; font-family: var(--font); }
+.sp-example s { color: var(--ink-3); }
+.sp-example b { color: var(--gold); }
+.sp-note { padding-left: 16px; border-left: 3px solid var(--gold); }
+.sp-small { font-size: 15px; color: var(--ink-3); }
 
-  /* The three sections as one row of equal buttons */
-  .sp-jump { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 18px; }
-  .sp-jump a { flex-direction: column; justify-content: center; gap: 6px; padding: 12px 6px; border-radius: 16px; font-size: 13.5px; line-height: 1.45; text-align: center; }
+.sp-video { position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: #000; }
+.sp-video-tall { aspect-ratio: 9 / 16; max-width: 300px; }
+.sp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-  /* One card per section, no box inside a box */
-  .sp-section { padding: 22px 18px; border-radius: 26px; margin-bottom: 16px; }
-  .sp-section h2 { font-size: 20px; gap: 10px; }
-  .sp-num { width: 32px; height: 32px; font-size: 16px; }
-  .sp-lead { margin-bottom: 18px; }
+/* Banks: one line each, the video opens on tap */
+.sp-banks { margin-top: 20px; border-top: 1px solid var(--line); }
+.sp-banks details { border-bottom: 1px solid var(--line); }
+.sp-banks summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; cursor: pointer; list-style: none; }
+.sp-banks summary::-webkit-details-marker { display: none; }
+.sp-banks summary::after { content: ""; flex: none; width: 9px; height: 9px; margin-right: 4px; border-right: 2px solid var(--ink-3); border-bottom: 2px solid var(--ink-3); transform: rotate(45deg); transition: transform .2s; }
+.sp-banks details[open] summary::after { transform: rotate(-135deg); }
+.sp-banks summary > span, .sp-contacts a > span { display: grid; line-height: 1.5; }
+.sp-banks summary small, .sp-contacts small { font-size: 14px; color: var(--ink-3); }
+.sp-banks details > :not(summary) { margin-bottom: 20px; }
 
-  .sp-howto, .sp-howto-wide { grid-template-columns: 1fr; gap: 22px; }
-  .sp-switch { margin-bottom: 20px; }
-  .sp-switch button { gap: 10px; min-height: 56px; padding: 8px 10px; }
-  .sp-callout { padding: 16px; }
-  .sp-short { width: min(100%, 240px); margin: 0 auto; border-radius: 18px; }
-  .sp-steps li { padding-left: 40px; padding-bottom: 14px; }
+/* Contact: a short list of links */
+.sp-contacts { list-style: none; margin: 20px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.sp-contacts li { border-bottom: 1px solid var(--line); }
+.sp-article .sp-contacts a { display: flex; align-items: center; gap: 16px; padding: 14px 0; color: inherit; text-decoration: none; }
+.sp-contacts svg { width: 24px; height: 24px; flex: none; color: var(--gold); }
+.sp-contacts a:hover b { color: var(--gold); }
 
-  .sp-expiry { margin-top: 18px; padding: 18px 16px; border-radius: 20px; }
-  .sp-expiry-head { align-items: flex-start; }
-  .sp-expiry-head svg { width: 26px; height: 26px; margin-top: 3px; }
-  .sp-expiry > p { margin: 8px 0 16px; }
-  .sp-expiry-demo { flex-direction: column; gap: 10px; }
-  .sp-card { width: min(100%, 260px); }
-  .sp-arrow { transform: rotate(90deg); line-height: 0; }
-  .sp-arrow svg { width: 28px; height: 28px; }
-  .sp-fields { width: 100%; }
-  .sp-field { min-width: 0; font-size: 20px; padding: 10px 14px; }
-
-  .sp-banks { gap: 26px; }
-  .sp-bank { padding: 0; background: none; border: 0; border-radius: 0; gap: 8px; }
-  .sp-bank + .sp-bank { padding-top: 22px; border-top: 1px solid var(--line); }
-  .sp-video { border-radius: 12px; }
-
-  .sp-contacts { grid-template-columns: 1fr; gap: 10px; }
-  .sp-contact { padding: 14px 16px; }
+@media (max-width: 600px) {
+  .sp-article { font-size: 16px; }
+  .sp-intro { font-size: 17px; }
+  .sp-switch { display: flex; }
+  .sp-switch[hidden] { display: none; }
+  .sp-switch button { flex: 1; min-width: 0; }
+  .sp-video-tall { max-width: 260px; }
 }

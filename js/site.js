@@ -275,7 +275,6 @@
     var android = /Android/i.test(navigator.userAgent);
     var first = fromHash() || (android ? tabs[1] : tabs[0]);
     phoneSwitch.hidden = false;
-    phoneSwitch.parentNode.classList.add('sp-switched');
     select(first, false);
     // Scroll to the guide once it is shown.
     if (fromHash() === first) {
