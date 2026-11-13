@@ -594,7 +594,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .sp-article a { color: var(--gold); text-underline-offset: 3px; }
 .sp-intro { font-size: 19px; color: var(--ink-2); }
 .sp-article section { scroll-margin-top: 88px; }
-.sp-article > section + section, .sp-small + section { margin-top: 64px; }
+.sp-article > section + section { margin-top: 64px; }
 
 /* iPhone / Android: a plain segmented control */
 .sp-switch { display: inline-flex; gap: 4px; padding: 4px; margin: 20px 0 36px; border-radius: 12px; background: rgba(255, 255, 255, .07); }
@@ -618,6 +618,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .sp-small { font-size: 15px; color: var(--ink-3); }
 
 .sp-video { position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: #000; }
+.sp-panel > .sp-video { margin-bottom: 28px; }
 .sp-video-tall { aspect-ratio: 9 / 16; max-width: 300px; }
 .sp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
